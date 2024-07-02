@@ -1,0 +1,27 @@
+.chatcontainer{
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    /* height: 250px;
+    width: 250px;
+    
+    position: relative; */
+    bottom: 0px;
+    background-color: white;
+    opacity: 50%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+}
+.container{/*
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100px;
+    width:fit-content;
+    background-color: purple;
+    position: absolute;*/
+    bottom: 0px;
+
+
+} 
