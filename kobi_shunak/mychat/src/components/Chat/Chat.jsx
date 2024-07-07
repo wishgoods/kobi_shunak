@@ -30,7 +30,7 @@ const Chat = (props) => {
             }
             
         });
-    }, []);
+    }, [messages]);
 
     const sendMessage = (e) => {
       
@@ -48,15 +48,15 @@ const Chat = (props) => {
     const checkChatColors=(message)=>{
      
         
-        if(message.from == localStorage.getItem("logged_user").from)
+        if(message.from == localStorage.getItem("logged_user"))
             return "green";
         else 
-            return "red"
+            return "black"
         
     }
     return (
-        <div className='chatcontainer'><CloseIcon onClick={closeChat}></CloseIcon>
-                <Card style={{overflowY:"scroll",height:"200px"}}><List>{messages?.map((el)=>{return <ListItem key={el.message} style={{color:checkChatColors(el)}}>{el.message}{el.seen?<><CheckIcon></CheckIcon><CheckIcon></CheckIcon></>:<></>}</ListItem>})}</List></Card>
+        <div className={'chatcontainer '+(props.chat_user!=null?"chat_open":"chat_closed")}><CloseIcon onClick={closeChat}></CloseIcon>
+                <Card style={{overflowY:"scroll",height:"200px"}}><List>{messages?.map((el)=>{return <ListItem key={el.message+Date.now()+Math.random()} style={{color:checkChatColors(el)}}>{el.message}{el.seen?<><CheckIcon style={{width:"12px",color:"blue"}}></CheckIcon><CheckIcon style={{width:"12px",color:"blue"}}></CheckIcon></>:<></>}</ListItem>})}</List></Card>
             <Input 
             value={inputValue}
             onChange={handleInputChange}

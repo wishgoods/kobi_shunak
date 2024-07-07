@@ -130,6 +130,7 @@ io.on('connection', (socket) => { //connect to mongodb
 
       exists.forEach((el) => {
         if (message.user == el.username) {
+         
           users.push(el);
         }
       })
@@ -258,7 +259,7 @@ io.on('connection', (socket) => { //connect to mongodb
   });
   
   socket.on('disconnect', () => {
-   
+    
   });
 });
 

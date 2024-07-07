@@ -25,8 +25,7 @@ const Room=(props)=>{
                     
             }
             else{
-                const not_me = message.filter((el)=>{return( el.user!= localStorage.getItem("logged_user") ) })
-                
+                const not_me = message;//.filter((el)=>{return( el.user!= localStorage.getItem("logged_user") )})
                 setUsers(not_me);
                 
             }
@@ -71,7 +70,7 @@ const Room=(props)=>{
                     {users.map((el)=>{return <ListItem key={el.user}><Button onClick={()=>selectUser(el.user)}>{el.user}</Button></ListItem>})}
                 </List>:<></>}
             </div>
-            {chat_user!=null?<Chat setChatUser={resetChatUser}></Chat>:<></>}
+            <Chat setChatUser={resetChatUser} chat_user={chat_user}></Chat>
         </div>);
 }
 

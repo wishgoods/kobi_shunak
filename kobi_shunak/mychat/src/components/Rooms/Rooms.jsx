@@ -16,13 +16,13 @@ const Rooms=()=>{
     const [rooms, setRooms] = useState(null);
     const [show_rooms, setShowRooms] = useState(false);
     const [new_room_data,setNewRoomData]= useState(null);
-
+    const [room_deleted,setRoomDeleted] = useState(0);
     const navigate = useNavigate();
     
     useEffect(()=>{
         socket.emit('clearMessages');
         socket.emit('sendMessage', null ,"GetRooms");
-    },[]);
+    },[show_rooms,room_deleted]);
     useEffect(()=>{
         socket.on('sendMessage', async (message, route) => {
             setRooms(message);
@@ -44,8 +44,10 @@ const Rooms=()=>{
     }
     const showAddRooms=()=>{
         if(show_rooms){
-            socket.emit('sendMessage', {name:new_room_data.name,color:new_room_data.color} ,"AddRoom"); 
+           if(new_room_data!= null) 
+                socket.emit('sendMessage', {name:new_room_data.name,color:new_room_data.color} ,"AddRoom"); 
             setShowRooms(false);
+            setNewRoomData(null)
         }
         else
             setShowRooms(true);
@@ -55,10 +57,12 @@ const Rooms=()=>{
 
     }
     const setRoomData=(data)=>{
+        
         setNewRoomData(data);
     }
     const deleteRoom=(room_number)=>{
         socket.emit('sendMessage', {room_number:room_number} ,"DeleteRoom"); 
+        setRoomDeleted(room_number);
     }
 
     return (

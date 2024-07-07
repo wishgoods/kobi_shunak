@@ -2,26 +2,23 @@
     display: flex;
     flex-direction: column;
     align-content: space-between;
-    /* height: 250px;
-    width: 250px;
-    
-    position: relative; */
     bottom: 0px;
     background-color: white;
     opacity: 50%;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-
+    transition: height 2s ease-out;
+    
 }
-.container{/*
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100px;
-    width:fit-content;
-    background-color: purple;
-    position: absolute;*/
-    bottom: 0px;
-
-
-} 
+.chatcontainer.chat_open{
+    visibility: visible;
+    width: 300px;
+    height: 300px;
+    
+}
+.chatcontainer.chat_closed{
+   
+    visibility: hidden;
+    width: 0px;
+    height: 0px;
+}
