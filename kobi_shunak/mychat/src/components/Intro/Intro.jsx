@@ -28,7 +28,7 @@ const Intro = () => {
             }
         });
 
-    },[])
+    },[navigate])
 
     const login=()=>{
         socket.emit('sendMessage', user_data ,"GetUser");
@@ -41,8 +41,8 @@ const Intro = () => {
 
     }
     const setData=(e,type)=>{
-        if(type=="password"){setUserData({...user_data,password:e.target.value});}
-        else if(type=="username"){setUserData({...user_data,username:e.target.value});}
+        if(type==="password"){setUserData({...user_data,password:e.target.value});}
+        else if(type==="username"){setUserData({...user_data,username:e.target.value});}
         else{setUserData({...user_data,name:e.target.value});}
     }
 

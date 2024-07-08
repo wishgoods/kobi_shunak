@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 import './Chat.css';
-import { Card, FormLabel, Icon, Input, List, ListItem } from '@mui/material';
+import { Card, Input, List, ListItem } from '@mui/material';
 import CloseIcon from '@material-ui/icons/Close';
 import CheckIcon from '@material-ui/icons/Check'
 
@@ -48,7 +48,7 @@ const Chat = (props) => {
     const checkChatColors=(message)=>{
      
         
-        if(message.from == localStorage.getItem("logged_user"))
+        if(message.from === localStorage.getItem("logged_user"))
             return "green";
         else 
             return "black"

@@ -31,9 +31,14 @@ function App() {
 
     // Clean up the socket connection when the component unmounts
     return () => {
-      socket.disconnect();
+      if(isConnected){
+        socket.off('connect');
+        socket.off('message');
+        socket.disconnect();
+      }
+      
     };
-  }, []);
+  }, [isConnected]);
 
   return ( 
     <BrowserRouter>

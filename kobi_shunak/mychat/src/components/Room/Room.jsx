@@ -26,7 +26,7 @@ const Room=(props)=>{
             }
             else{
 
-                const not_me = message.filter((el)=>{console.log(el.user!= localStorage.getItem("logged_user")); return( el.user!= localStorage.getItem("logged_user") )})
+                const not_me = message.filter((el)=>{ return( el.user!== localStorage.getItem("logged_user") )})
                 
                 setUsers(not_me);
                 
@@ -51,7 +51,7 @@ const Room=(props)=>{
     
         // Add event listener when component mounts
         window.addEventListener('popstate', handleBackNavigation);
-    
+        window.addEventListener('beforeunload',handleBackNavigation);
         // Clean up event listener when component unmounts
         
       }, []);
@@ -65,7 +65,7 @@ const Room=(props)=>{
     }
     
     return (
-        <div className='maincontainer' style={{backgroundColor:room?.color}}>
+        <div className='maincontainer' style={{borderColor:room?.color}}>
             <div className='container'>
                 <h1>Room's Users</h1>
                 {users!=null?<List >

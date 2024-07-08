@@ -37,7 +37,7 @@ const Signup = () => {
             }
         });
 
-    },[])
+    },[navigate])
     const sigup=()=>{
         
         if(user_data.name.length>3 && user_data.username.length>3 &&user_data.password.length>=6) // could add more verfications here
@@ -52,8 +52,8 @@ const Signup = () => {
         
     }
     const setData=(e,type)=>{
-        if(type=="password"){setUserData({...user_data,password:e.target.value});}
-        else if(type=="username"){setUserData({...user_data,username:e.target.value});}
+        if(type==="password"){setUserData({...user_data,password:e.target.value});}
+        else if(type==="username"){setUserData({...user_data,username:e.target.value});}
         else{setUserData({...user_data,name:e.target.value});}
     }
     

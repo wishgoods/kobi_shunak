@@ -3,7 +3,7 @@ import { useEffect, useState} from 'react';
 import io from 'socket.io-client';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import { Button, Input } from '@mui/material';
+import { Button } from '@mui/material';
 import './Rooms.css';
 import { useNavigate } from 'react-router-dom';
 import AddIcon from '@material-ui/icons/Add';

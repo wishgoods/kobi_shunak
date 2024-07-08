@@ -6,7 +6,7 @@ const AddRoom=(props)=>{
     const [room_name,setRoomName] = useState("room name");
     const [room_color,setRoomColor] = useState("room color");
     const clearInput=(name)=>{
-        if(name=="color")
+        if(name==="color")
         {
             setRoomColor('')
         }
