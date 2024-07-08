@@ -25,7 +25,9 @@ const Room=(props)=>{
                     
             }
             else{
-                const not_me = message;//.filter((el)=>{return( el.user!= localStorage.getItem("logged_user") )})
+
+                const not_me = message.filter((el)=>{console.log(el.user!= localStorage.getItem("logged_user")); return( el.user!= localStorage.getItem("logged_user") )})
+                
                 setUsers(not_me);
                 
             }
