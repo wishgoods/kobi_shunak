@@ -142,6 +142,14 @@ io.on('connection', (socket) => { //connect to mongodb
           user: message.user,
           room: message.room
         });
+
+        const users = await collection_usersrooms.find({
+          username: {
+            $exists: true
+          }
+        }).toArray();
+        socket.emit('sendMessage', users,"refreshUsers");
+
       }
 
     } else if (route === "GetRoom") {
@@ -188,6 +196,13 @@ io.on('connection', (socket) => { //connect to mongodb
       await collection_usersrooms.deleteMany({
         user: message.user
       });
+
+      const users = await collection_usersrooms.find({
+        username: {
+          $exists: true
+        }
+      }).toArray();
+      socket.emit('sendMessage', users,"refreshUsers");
 
     } else if (route === "AddMessage") {
       if (message.message != null && message.from != "" && message.to != "") {

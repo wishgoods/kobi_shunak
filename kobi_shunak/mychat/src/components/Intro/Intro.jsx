@@ -16,6 +16,8 @@ const Intro = () => {
     const navigate = useNavigate();
 
     useEffect(()=>{
+        if(localStorage.getItem("token"))
+            navigate('/rooms');
         socket.on('sendMessage', async (message, route) => {
             if(message === "user does not Exists"){
                 setInfo(true);

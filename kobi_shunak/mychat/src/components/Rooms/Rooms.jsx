@@ -19,15 +19,38 @@ const Rooms=()=>{
     const [room_deleted,setRoomDeleted] = useState(0);
     const navigate = useNavigate();
     
+    
     useEffect(()=>{
         socket.emit('clearMessages');
         socket.emit('sendMessage', null ,"GetRooms");
     },[show_rooms,room_deleted]);
     useEffect(()=>{
+
+       
+        const handleBackNavigation = (event) => {
+            
+            socket.emit('sendMessage', {user:localStorage.getItem('logged_user')} ,"LeaveRoom"); 
+            
+        };
+        const handleExitNavigation = (event) => {
+            localStorage.removeItem("chat_user");
+            localStorage.removeItem("logged_user");
+            localStorage.removeItem("token");
+            socket.emit('sendMessage', {user:localStorage.getItem('logged_user')} ,"LeaveRoom"); 
+            
+        };
         socket.on('sendMessage', async (message, route) => {
             setRooms(message);
         });
-        
+         // Add event listener when component mounts
+         window.addEventListener('popstate', handleBackNavigation);
+         window.addEventListener('beforeunload',handleExitNavigation);
+ 
+         // Clean up event listener when component unmounts
+         return () => {
+             window.removeEventListener('popstate',null);
+             window.removeEventListener('beforeunload',null);
+         };
     },[])
     const selectRoom=(room_number)=>{
         socket.emit('sendMessage', {user:localStorage.getItem('logged_user'),room:room_number} ,"AddUserToRoom"); 
