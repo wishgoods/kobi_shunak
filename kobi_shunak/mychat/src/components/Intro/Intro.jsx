@@ -42,12 +42,18 @@ const Intro = () => {
         navigate('/signup');
 
     }
-    const setData=(e,type)=>{
+    const setData=(e,type)=>{        
         if(type==="password"){setUserData({...user_data,password:e.target.value});}
         else if(type==="username"){setUserData({...user_data,username:e.target.value});}
         else{setUserData({...user_data,name:e.target.value});}
     }
-
+    const passwordKeyDown=(e)=>{
+        
+        if(e.code==="Enter" || e.code==="NumpadEnter"){
+            login();
+        }
+            
+    }
     return (
         
             <div className='maincontainer'>
@@ -56,7 +62,7 @@ const Intro = () => {
                     <InputLabel>username</InputLabel>
                     <Input value={user_data.username} onChange={(e)=>setData(e,"username")}/>
                     <InputLabel>password</InputLabel>
-                    <Input value={user_data.password} type='password' onChange={(e)=>setData(e,"password")}/>
+                    <Input value={user_data.password} type='password'  onKeyDown={e=>passwordKeyDown(e)} onChange={(e)=>setData(e,"password")}/>
                     
                     <div className='spacer'></div>
                     <Button fullWidth={true} className='loginbutton' variant="contained" onClick={login}>Login</Button>

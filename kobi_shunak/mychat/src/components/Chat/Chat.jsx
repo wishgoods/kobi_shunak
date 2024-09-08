@@ -59,6 +59,7 @@ const Chat = (props) => {
         <div className={'chatcontainer '+(props.chat_user!=null?"chat_open":"chat_closed")}><CloseIcon onClick={closeChat}></CloseIcon>
                 <Card className='card' style={{overflowY:"scroll",height:"200px",backgroundColor: "#b9d0e3"}}><List>{messages?.map((el)=>{return <ListItem key={el.message+Date.now()+Math.random()} style={{color:checkChatColors(el)}}>{el.message}{el.seen?<><CheckIcon style={{width:"12px",color:"blue"}}></CheckIcon><CheckIcon style={{width:"12px",color:"blue"}}></CheckIcon></>:<></>}</ListItem>})}</List></Card>
             <Input 
+            multiline={true}
             style={{backgroundColor: "white"}}
             value={inputValue}
             onChange={handleInputChange}

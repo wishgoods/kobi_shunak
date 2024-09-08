@@ -29,7 +29,8 @@ function App() {
       console.log('Attempting to reconnect');
     });
 
-    // Clean up the socket connection when the component unmounts
+    // Clean up the socket connection when the component unmounts            navigate('/rooms');
+
     return () => {
       if(isConnected){
         socket.off('connect');

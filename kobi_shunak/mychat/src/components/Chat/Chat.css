@@ -4,7 +4,7 @@
     align-content: space-between;
     bottom: 0px;
     background-color: #b9d0e3;
-    opacity: 50%;
+    opacity: 70%;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     transition: height 2s ease-out;
@@ -22,3 +22,16 @@
     width: 0px;
     height: 0px;
 }
+.chatcontainer::-webkit-scrollbar {
+    width: 8px;               /* width of the entire scrollbar */
+  }
+  
+.chatcontainer::-webkit-scrollbar-track {
+    background: transparent;        /* color of the tracking area */
+  }
+  
+.chatcontainer::-webkit-scrollbar-thumb {
+    background-color: aliceblue;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    /* border: 3px solid aliceblue;  creates padding around scroll thumb */
+  }

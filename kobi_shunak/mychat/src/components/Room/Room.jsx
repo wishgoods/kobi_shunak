@@ -72,9 +72,9 @@ const Room=(props)=>{
     }
     
     return (
-        <div className='maincontainer' style={{backgroundImage:"url(" + Background + ")"}}>
+        <div className='maincontainer' style={{backgroundImage:"url(" + Background + ")"}}>  
+            <DialogTitle>{"Room " + room?.room_number+ " Users"}</DialogTitle>
             <div className='container' >
-                <DialogTitle>{"Room " + room?.room_number+ " Users"}</DialogTitle>
                 {users!=null?<List >
                     {users.map((el)=>{return <ListItem key={el.user}><Button onClick={()=>selectUser(el.user)}>{el.user}</Button></ListItem>})}
                 </List>:<></>}

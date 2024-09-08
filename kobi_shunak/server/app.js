@@ -148,7 +148,7 @@ io.on('connection', (socket) => { //connect to mongodb
             $exists: true
           }
         }).toArray();
-        socket.emit('sendMessage', users,"refreshUsers");
+        socket.emit('sendMessage', users,"RefreshUsers");
 
       }
 
@@ -202,7 +202,7 @@ io.on('connection', (socket) => { //connect to mongodb
           $exists: true
         }
       }).toArray();
-      socket.emit('sendMessage', users,"refreshUsers");
+      socket.emit('sendMessage', users,"RefreshUsers");
 
     } else if (route === "AddMessage") {
       if (message.message != null && message.from != "" && message.to != "") {

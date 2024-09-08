@@ -3,7 +3,6 @@
     flex-direction: column;
     align-items: center;
     border-bottom: solid 5px black;
-    height: 100%;
     width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -14,6 +13,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 500px;
     width: fit-content;
+    overflow-y: scroll;
+    width: 300px;
 }
+.container::-webkit-scrollbar {
+    width: 8px;               /* width of the entire scrollbar */
+  }
+  
+.container::-webkit-scrollbar-track {
+    background: transparent;        /* color of the tracking area */
+  }
+  
+.container::-webkit-scrollbar-thumb {
+    background-color: aliceblue;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    /* border: 3px solid aliceblue;  creates padding around scroll thumb */
+  }
